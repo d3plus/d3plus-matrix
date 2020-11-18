@@ -1,5 +1,5 @@
-import { Axis } from "d3plus-axis";
-import {accessor, assign, configPrep, constant, elem, merge, unique} from "d3plus-common";
+import {Axis} from "d3plus-axis";
+import {accessor, assign, configPrep, elem, unique} from "d3plus-common";
 import {Rect} from "d3plus-shape";
 import {Viz} from "d3plus-viz";
 
