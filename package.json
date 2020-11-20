@@ -1,6 +1,6 @@
 {
   "name": "d3plus-matrix",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Row/column layouts",
   "main": "build/d3plus-matrix.js",
   "jsnext:main": "es/index",
