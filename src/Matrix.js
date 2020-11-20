@@ -1,9 +1,9 @@
 import {Axis} from "d3plus-axis";
-import {accessor, assign, configPrep, elem, unique} from "d3plus-common";
+import {accessor, assign, configPrep, elem} from "d3plus-common";
 import {Rect} from "d3plus-shape";
 import {Viz} from "d3plus-viz";
-
-const cartesian = (a, b) => [].concat(...a.map(d => b.map(e => [].concat(d, e))));
+import getProp from "./helpers/getProp";
+import prepData from "./helpers/prepData";
 
 const defaultAxisConfig = {
   align: "start",
@@ -20,7 +20,7 @@ const defaultAxisConfig = {
 /**
     @class Matrix
     @extends Viz
-    @desc Uses the [d3 Matrix layout](https://github.com/mbostock/d3/wiki/Matrix-Layout) to creates SVG rectangles based on an array of data. See [this example](https://d3plus.org/examples/d3plus-hierarchy/getting-started/) for help getting started using the Matrix generator.
+    @desc Creates a simple rows/columns Matrix view of any dataset. See [this example](https://d3plus.org/examples/d3plus-matrix/getting-started/) for help getting started using the Matrix class.
 */
 export default class Matrix extends Viz {
 
@@ -33,19 +33,21 @@ export default class Matrix extends Viz {
 
     super();
 
+    this._cellPadding = 2;
+
     this._column = accessor("column");
     this._columnAxis = new Axis();
     this._columnConfig = assign({orient: "top"}, defaultAxisConfig);
     this._columnSort = (a, b) => `${a}`.localeCompare(`${b}`);
 
-    this._label = (d, i) => `${this._getProp("row", d, i)} / ${this._getProp("column", d, i)}`;
+    this._label = (d, i) => `${getProp.bind(this)("row", d, i)} / ${getProp.bind(this)("column", d, i)}`;
 
     const defaultMouseMoveShape = this._on["mousemove.shape"];
     this._on["mousemove.shape"] = (d, i) => {
       defaultMouseMoveShape(d, i);
-      const row = this._getProp("row", d, i);
-      const column = this._getProp("column", d, i);
-      this.hover((h, ii) => this._getProp("row", h, ii) === row || this._getProp("column", h, ii) === column);
+      const row = getProp.bind(this)("row", d, i);
+      const column = getProp.bind(this)("column", d, i);
+      this.hover((h, ii) => getProp.bind(this)("row", h, ii) === row || getProp.bind(this)("column", h, ii) === column);
     };
 
     this._row = accessor("row");
@@ -55,10 +57,6 @@ export default class Matrix extends Viz {
 
   }
 
-  _getProp(type, d, i) {
-    return d[type] || this[`_${type}`](d, i);
-  }
-
   /**
       @memberof Matrix
       @desc Extends the draw behavior of the abstract Viz class.
@@ -66,8 +64,7 @@ export default class Matrix extends Viz {
   */
   _draw(callback) {
 
-    const rowValues = unique(this._filteredData.map(this._row)).sort(this._rowSort);
-    const columnValues = unique(this._filteredData.map(this._column)).sort(this._columnSort);
+    const {rowValues, columnValues, shapeData} = prepData.bind(this)(this._filteredData);
 
     if (!rowValues.length || !columnValues.length) return this;
 
@@ -126,26 +123,6 @@ export default class Matrix extends Viz {
       .width(width - this._margin.left - this._margin.right - rowPadding)
       .render();
 
-    const shapeData = cartesian(rowValues, columnValues)
-      .map(([rowValue, columnValue]) => {
-        const dataObj = {
-          __d3plusTooltip__: true,
-          __d3plus__: true,
-          column: columnValue,
-          row: rowValue
-        };
-        const dataIndex = this._filteredData
-          .findIndex((d, i) => this._row(d, i) === rowValue && this._column(d, i) === columnValue);
-        if (dataIndex >= 0) {
-          dataObj.i = dataIndex;
-          dataObj.data = this._filteredData[dataIndex];
-        }
-        else {
-          dataObj.data = {row: rowValue, column: columnValue};
-        }
-        return dataObj;
-      });
-
     const rowScale = this._rowAxis._getPosition.bind(this._rowAxis);
     const columnScale = this._columnAxis._getPosition.bind(this._columnAxis);
     const cellHeight = rowValues.length > 1
@@ -166,8 +143,8 @@ export default class Matrix extends Viz {
         update: {transform}
       }).node())
       .config({
-        height: cellHeight,
-        width: cellWidth,
+        height: cellHeight - this._cellPadding,
+        width: cellWidth - this._cellPadding,
         x: d => columnScale(d.column) + cellWidth / 2,
         y: d => rowScale(d.row) + cellHeight / 2
       })
@@ -176,6 +153,15 @@ export default class Matrix extends Viz {
 
     return this;
 
+  }
+
+  /**
+      @memberof Matrix
+      @desc The pixel padding in between each cell.
+      @param {Number} [*value* = 2]
+  */
+  cellPadding(_) {
+    return arguments.length ? (this._cellPadding = _, this) : this._cellPadding;
   }
 
   /**
