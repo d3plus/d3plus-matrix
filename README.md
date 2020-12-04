@@ -61,7 +61,7 @@ new d3plus.Matrix()
 
 ### More Examples
 
- * [Radial Matrix](http://d3plus.org/examples/d3plus-matrix/radial-matrix/)<sup> ***New***</sup>
+ * [Radial Matrix](http://d3plus.org/examples/d3plus-matrix/radial-matrix/)
 
 ## API Reference
 
@@ -302,4 +302,4 @@ function row(a, b) {
 
 
 
-###### <sub>Documentation generated on Fri, 20 Nov 2020 15:41:13 GMT</sub>
+###### <sub>Documentation generated on Fri, 04 Dec 2020 15:54:49 GMT</sub>
