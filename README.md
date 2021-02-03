@@ -1,15 +1,18 @@
 # d3plus-matrix
 
-[![NPM Release](http://img.shields.io/npm/v/d3plus-matrix.svg?style=flat)](https://www.npmjs.org/package/d3plus-matrix) [![Build Status](https://travis-ci.org/d3plus/d3plus-matrix.svg?branch=master)](https://travis-ci.org/d3plus/d3plus-matrix) [![Dependency Status](http://img.shields.io/david/d3plus/d3plus-matrix.svg?style=flat)](https://david-dm.org/d3plus/d3plus-matrix) [![Gitter](https://img.shields.io/badge/-chat_on_gitter-brightgreen.svg?style=flat&logo=gitter-white)](https://gitter.im/d3plus/) 
+[![NPM Release](http://img.shields.io/npm/v/d3plus-matrix.svg?style=flat)](https://www.npmjs.org/package/d3plus-matrix) [![Build Status](https://travis-ci.org/d3plus/d3plus-matrix.svg?branch=master)](https://travis-ci.org/d3plus/d3plus-matrix) [![Dependency Status](http://img.shields.io/david/d3plus/d3plus-matrix.svg?style=flat)](https://david-dm.org/d3plus/d3plus-matrix) [![Gitter](https://img.shields.io/badge/-chat_on_gitter-brightgreen.svg?style=flat&logo=gitter-white)](https://gitter.im/d3plus/)
 
 Row/column layouts
 
 ## Installing
 
-If you use NPM, run `npm install d3plus-matrix --save`. Otherwise, download the [latest release](https://github.com/d3plus/d3plus-matrix/releases/latest). The released bundle supports AMD, CommonJS, and vanilla environments. You can also load directly from [d3plus.org](https://d3plus.org):
+If you use NPM, `npm install d3plus-matrix`. Otherwise, download the [latest release](https://github.com/d3plus/d3plus-matrix/releases/latest). You can also load d3plus-matrix as a standalone library or as part of [D3plus](https://github.com/d3plus/d3plus). ES modules, AMD, CommonJS, and vanilla environments are supported. In vanilla, a `d3plus` global is exported:
 
 ```html
-<script src="https://d3plus.org/js/d3plus-matrix.v0.1.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3plus-matrix@1"></script>
+<script>
+  console.log(d3plus);
+</script>
 ```
 
 
@@ -302,4 +305,4 @@ function row(a, b) {
 
 
 
-###### <sub>Documentation generated on Fri, 04 Dec 2020 15:54:49 GMT</sub>
+###### <sub>Documentation generated on Wed, 03 Feb 2021 14:38:52 GMT</sub>
