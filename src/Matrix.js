@@ -43,8 +43,8 @@ export default class Matrix extends Viz {
     this._label = (d, i) => `${getProp.bind(this)("row", d, i)} / ${getProp.bind(this)("column", d, i)}`;
 
     const defaultMouseMoveShape = this._on["mousemove.shape"];
-    this._on["mousemove.shape"] = (d, i) => {
-      defaultMouseMoveShape(d, i);
+    this._on["mousemove.shape"] = (d, i, x, event) => {
+      defaultMouseMoveShape(d, i, x, event);
       const row = getProp.bind(this)("row", d, i);
       const column = getProp.bind(this)("column", d, i);
       this.hover((h, ii) => getProp.bind(this)("row", h, ii) === row || getProp.bind(this)("column", h, ii) === column);
