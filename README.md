@@ -75,7 +75,7 @@ new d3plus.Matrix()
 ---
 
 <a name="Matrix"></a>
-#### **Matrix** [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L20)
+#### **Matrix** [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L21)
 
 
 This is a global class, and extends all of the methods and functionality of <code>Viz</code>.
@@ -86,9 +86,11 @@ This is a global class, and extends all of the methods and functionality of <cod
     * [.cellPadding([*value*])](#Matrix.cellPadding)
     * [.column([*value*])](#Matrix.column)
     * [.columnConfig(*value*)](#Matrix.columnConfig) ↩︎
+    * [.columnList([*value*])](#Matrix.columnList)
     * [.columnSort([*value*])](#Matrix.columnSort)
     * [.row([*value*])](#Matrix.row)
     * [.rowConfig(*value*)](#Matrix.rowConfig) ↩︎
+    * [.rowList([*value*])](#Matrix.rowList)
     * [.rowSort([*value*])](#Matrix.rowSort)
 
 
@@ -100,7 +102,7 @@ Creates a simple rows/columns Matrix view of any dataset. See [this example](htt
 
 
 
-<a name="Matrix.cellPadding" href="#Matrix.cellPadding">#</a> Matrix.**cellPadding**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L163)
+<a name="Matrix.cellPadding" href="#Matrix.cellPadding">#</a> Matrix.**cellPadding**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L165)
 
 The pixel padding in between each cell.
 
@@ -108,7 +110,7 @@ The pixel padding in between each cell.
 This is a static method of [<code>Matrix</code>](#Matrix).
 
 
-<a name="Matrix.column" href="#Matrix.column">#</a> Matrix.**column**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L176)
+<a name="Matrix.column" href="#Matrix.column">#</a> Matrix.**column**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L178)
 
 Determines which key in your data should be used for each column in the matrix. Can be either a String that matches a key used in every data point, or an accessor function that receives a data point and it's index in the data array, and is expected to return it's column value.
 
@@ -123,7 +125,7 @@ function column(d) {
 ```
 
 
-<a name="Matrix.columnConfig" href="#Matrix.columnConfig">#</a> Matrix.**columnConfig**(*value*) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L186)
+<a name="Matrix.columnConfig" href="#Matrix.columnConfig">#</a> Matrix.**columnConfig**(*value*) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L188)
 
 A pass-through to the underlying [Axis](http://d3plus.org/docs/#Axis) config used for the column labels.
 
@@ -131,7 +133,15 @@ A pass-through to the underlying [Axis](http://d3plus.org/docs/#Axis) config use
 This is a static method of [<code>Matrix</code>](#Matrix), and is chainable with other methods of this Class.
 
 
-<a name="Matrix.columnSort" href="#Matrix.columnSort">#</a> Matrix.**columnSort**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L199)
+<a name="Matrix.columnList" href="#Matrix.columnList">#</a> Matrix.**columnList**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L197)
+
+A manual list of IDs to be used for columns.
+
+
+This is a static method of [<code>Matrix</code>](#Matrix).
+
+
+<a name="Matrix.columnSort" href="#Matrix.columnSort">#</a> Matrix.**columnSort**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L210)
 
 A sort comparator function that is run on the unique set of column values.
 
@@ -146,7 +156,7 @@ function column(a, b) {
 ```
 
 
-<a name="Matrix.row" href="#Matrix.row">#</a> Matrix.**row**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L212)
+<a name="Matrix.row" href="#Matrix.row">#</a> Matrix.**row**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L223)
 
 Determines which key in your data should be used for each row in the matrix. Can be either a String that matches a key used in every data point, or an accessor function that receives a data point and it's index in the data array, and is expected to return it's row value.
 
@@ -161,7 +171,7 @@ function row(d) {
 ```
 
 
-<a name="Matrix.rowConfig" href="#Matrix.rowConfig">#</a> Matrix.**rowConfig**(*value*) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L222)
+<a name="Matrix.rowConfig" href="#Matrix.rowConfig">#</a> Matrix.**rowConfig**(*value*) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L233)
 
 A pass-through to the underlying [Axis](http://d3plus.org/docs/#Axis) config used for the row labels.
 
@@ -169,7 +179,15 @@ A pass-through to the underlying [Axis](http://d3plus.org/docs/#Axis) config use
 This is a static method of [<code>Matrix</code>](#Matrix), and is chainable with other methods of this Class.
 
 
-<a name="Matrix.rowSort" href="#Matrix.rowSort">#</a> Matrix.**rowSort**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L235)
+<a name="Matrix.rowList" href="#Matrix.rowList">#</a> Matrix.**rowList**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L242)
+
+A manual list of IDs to be used for rows.
+
+
+This is a static method of [<code>Matrix</code>](#Matrix).
+
+
+<a name="Matrix.rowSort" href="#Matrix.rowSort">#</a> Matrix.**rowSort**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/Matrix.js#L255)
 
 A sort comparator function that is run on the unique set of row values.
 
@@ -197,9 +215,11 @@ This is a global class, and extends all of the methods and functionality of <cod
     * [.cellPadding([*value*])](#RadialMatrix.cellPadding)
     * [.column([*value*])](#RadialMatrix.column)
     * [.columnConfig(*value*)](#RadialMatrix.columnConfig) ↩︎
+    * [.columnList([*value*])](#RadialMatrix.columnList)
     * [.columnSort([*value*])](#RadialMatrix.columnSort)
     * [.innerRadius([*value*])](#RadialMatrix.innerRadius)
     * [.row([*value*])](#RadialMatrix.row)
+    * [.rowList([*value*])](#RadialMatrix.rowList)
     * [.rowSort([*value*])](#RadialMatrix.rowSort)
 
 
@@ -242,7 +262,15 @@ A pass-through to the underlying [Axis](http://d3plus.org/docs/#Axis) config use
 This is a static method of [<code>RadialMatrix</code>](#RadialMatrix), and is chainable with other methods of this Class.
 
 
-<a name="RadialMatrix.columnSort" href="#RadialMatrix.columnSort">#</a> RadialMatrix.**columnSort**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/RadialMatrix.js#L196)
+<a name="RadialMatrix.columnList" href="#RadialMatrix.columnList">#</a> RadialMatrix.**columnList**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/RadialMatrix.js#L192)
+
+A manual list of IDs to be used for columns.
+
+
+This is a static method of [<code>RadialMatrix</code>](#RadialMatrix).
+
+
+<a name="RadialMatrix.columnSort" href="#RadialMatrix.columnSort">#</a> RadialMatrix.**columnSort**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/RadialMatrix.js#L205)
 
 A sort comparator function that is run on the unique set of column values.
 
@@ -257,7 +285,7 @@ function column(a, b) {
 ```
 
 
-<a name="RadialMatrix.innerRadius" href="#RadialMatrix.innerRadius">#</a> RadialMatrix.**innerRadius**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/RadialMatrix.js#L209)
+<a name="RadialMatrix.innerRadius" href="#RadialMatrix.innerRadius">#</a> RadialMatrix.**innerRadius**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/RadialMatrix.js#L218)
 
 The radius (in pixels) for the inner donut hole of the diagram. Can either be a static Number, or an accessor function that receives the outer radius as it's only argument.
 
@@ -272,7 +300,7 @@ function(outerRadius) {
 ```
 
 
-<a name="RadialMatrix.row" href="#RadialMatrix.row">#</a> RadialMatrix.**row**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/RadialMatrix.js#L222)
+<a name="RadialMatrix.row" href="#RadialMatrix.row">#</a> RadialMatrix.**row**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/RadialMatrix.js#L231)
 
 Determines which key in your data should be used for each row in the matrix. Can be either a String that matches a key used in every data point, or an accessor function that receives a data point and it's index in the data array, and is expected to return it's row value.
 
@@ -287,7 +315,15 @@ function row(d) {
 ```
 
 
-<a name="RadialMatrix.rowSort" href="#RadialMatrix.rowSort">#</a> RadialMatrix.**rowSort**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/RadialMatrix.js#L235)
+<a name="RadialMatrix.rowList" href="#RadialMatrix.rowList">#</a> RadialMatrix.**rowList**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/RadialMatrix.js#L240)
+
+A manual list of IDs to be used for rows.
+
+
+This is a static method of [<code>RadialMatrix</code>](#RadialMatrix).
+
+
+<a name="RadialMatrix.rowSort" href="#RadialMatrix.rowSort">#</a> RadialMatrix.**rowSort**([*value*]) [<>](https://github.com/d3plus/d3plus-matrix/blob/master/src/RadialMatrix.js#L253)
 
 A sort comparator function that is run on the unique set of row values.
 
@@ -305,4 +341,4 @@ function row(a, b) {
 
 
 
-###### <sub>Documentation generated on Wed, 03 Feb 2021 14:38:52 GMT</sub>
+###### <sub>Documentation generated on Wed, 10 Feb 2021 21:08:38 GMT</sub>
