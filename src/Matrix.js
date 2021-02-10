@@ -11,6 +11,7 @@ const defaultAxisConfig = {
     stroke: 0
   },
   gridSize: 0,
+  padding: 5,
   paddingInner: 0,
   paddingOuter: 0,
   scale: "band",
@@ -81,46 +82,47 @@ export default class Matrix extends Viz {
     this._rowAxis
       .select(selectElem("row", {enter: hidden, update: hidden}))
       .domain(rowValues)
-      .height(height)
-      .maxSize(width / 2)
+      .height(height - this._margin.top - this._margin.bottom - this._padding.bottom - this._padding.top)
+      .maxSize(width / 3)
       .width(width)
       .config(this._rowConfig)
       .render();
 
-    const rowPadding = this._rowAxis.outerBounds().width - this._rowAxis.padding() * 2;
+    const rowPadding = this._rowAxis.outerBounds().width;
     this._padding.left += rowPadding;
-
-    let columnTransform = `translate(${rowPadding + this._margin.left}, ${this._margin.top})`;
+    let columnTransform = `translate(0, ${this._margin.top})`;
     const hiddenTransform = Object.assign({transform: columnTransform}, hidden);
 
     this._columnAxis
       .select(selectElem("column", {enter: hiddenTransform, update: hiddenTransform}))
       .domain(columnValues)
+      .range([this._margin.left + this._padding.left, width - this._margin.right + this._padding.right])
       .height(height)
-      .maxSize(height / 2)
+      .maxSize(height / 3)
       .width(width)
       .config(this._columnConfig)
       .render();
 
-    const columnPadding = this._columnAxis.outerBounds().height - this._columnAxis.padding() * 2;
+    const columnPadding = this._columnAxis.outerBounds().height;
     this._padding.top += columnPadding;
 
     super._draw(callback);
 
-    const rowTransform = `translate(${this._margin.left}, ${columnPadding + this._margin.top})`;
-    columnTransform = `translate(${rowPadding + this._margin.left}, ${this._margin.top})`;
+    const rowTransform = `translate(${this._margin.left}, ${this._margin.top})`;
+    columnTransform = `translate(0, ${this._margin.top})`;
     const visibleTransform = Object.assign({transform: columnTransform}, visible);
 
     this._rowAxis
       .select(selectElem("row", {update: Object.assign({transform: rowTransform}, visible)}))
-      .height(height - this._margin.top - this._margin.bottom - columnPadding)
-      .width(rowPadding + this._rowAxis.padding() * 2)
+      .height(height - this._margin.top - this._margin.bottom - this._padding.bottom)
+      .maxSize(rowPadding)
+      .range([columnPadding + this._columnAxis.padding(), undefined])
       .render();
 
     this._columnAxis
       .select(selectElem("column", {update: visibleTransform}))
-      .height(columnPadding + this._columnAxis.padding() * 2)
-      .width(width - this._margin.left - this._margin.right - rowPadding)
+      .range([this._margin.left + this._padding.left + this._rowAxis.padding(), width - this._margin.right + this._padding.right])
+      .maxSize(columnPadding)
       .render();
 
     const rowScale = this._rowAxis._getPosition.bind(this._rowAxis);
@@ -132,7 +134,7 @@ export default class Matrix extends Viz {
       ? columnScale(columnValues[1]) - columnScale(columnValues[0])
       : this._columnAxis.width();
 
-    const transform = `translate(${this._margin.left + rowPadding}, ${this._margin.top + columnPadding})`;
+    const transform = `translate(0, ${this._margin.top})`;
     const rectConfig = configPrep.bind(this)(this._shapeConfig, "shape", "Rect");
 
     this._shapes.push(new Rect()
