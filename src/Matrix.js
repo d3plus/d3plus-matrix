@@ -77,13 +77,15 @@ export default class Matrix extends Viz {
     const hidden = {opacity: 0};
     const visible = {opacity: 1};
 
+    const columnRotation = width / columnValues.length < 120;
+
     const selectElem = (name, opts) => elem(`g.d3plus-Matrix-${name}`, Object.assign({parent, transition}, opts)).node();
 
     this._rowAxis
       .select(selectElem("row", {enter: hidden, update: hidden}))
       .domain(rowValues)
       .height(height - this._margin.top - this._margin.bottom - this._padding.bottom - this._padding.top)
-      .maxSize(width / 3)
+      .maxSize(width / 4)
       .width(width)
       .config(this._rowConfig)
       .render();
@@ -98,8 +100,9 @@ export default class Matrix extends Viz {
       .domain(columnValues)
       .range([this._margin.left + this._padding.left, width - this._margin.right + this._padding.right])
       .height(height)
-      .maxSize(height / 3)
+      .maxSize(height / 4)
       .width(width)
+      .labelRotation(columnRotation)
       .config(this._columnConfig)
       .render();
 
