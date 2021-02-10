@@ -186,6 +186,15 @@ function column(d) {
 
   /**
       @memberof RadialMatrix
+      @desc A manual list of IDs to be used for columns.
+      @param {Array} [*value*]
+  */
+  columnList(_) {
+    return arguments.length ? (this._columnList = _, this) : this._columnList;
+  }
+
+  /**
+      @memberof RadialMatrix
       @desc A sort comparator function that is run on the unique set of column values.
       @param {Function} [*value*]
       @example
@@ -221,6 +230,15 @@ function row(d) {
   */
   row(_) {
     return arguments.length ? (this._row = typeof _ === "function" ? _ : accessor(_), this) : this._row;
+  }
+
+  /**
+      @memberof RadialMatrix
+      @desc A manual list of IDs to be used for rows.
+      @param {Array} [*value*]
+  */
+  rowList(_) {
+    return arguments.length ? (this._rowList = _, this) : this._rowList;
   }
 
   /**

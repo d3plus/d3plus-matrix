@@ -8,8 +8,8 @@ const cartesian = (a, b) => [].concat(...a.map(d => b.map(e => [].concat(d, e)))
 export default function() {
 
   const data = this._filteredData;
-  const rowValues = unique(data.map(this._row)).sort(this._rowSort);
-  const columnValues = unique(data.map(this._column)).sort(this._columnSort);
+  const rowValues = (this._rowList || unique(data.map(this._row))).sort(this._rowSort);
+  const columnValues = (this._columnList || unique(data.map(this._column))).sort(this._columnSort);
 
   if (!rowValues.length || !columnValues.length) return this;
 

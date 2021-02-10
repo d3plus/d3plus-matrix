@@ -191,6 +191,15 @@ function column(d) {
 
   /**
       @memberof Matrix
+      @desc A manual list of IDs to be used for columns.
+      @param {Array} [*value*]
+  */
+  columnList(_) {
+    return arguments.length ? (this._columnList = _, this) : this._columnList;
+  }
+
+  /**
+      @memberof Matrix
       @desc A sort comparator function that is run on the unique set of column values.
       @param {Function} [*value*]
       @example
@@ -223,6 +232,15 @@ function row(d) {
   */
   rowConfig(_) {
     return arguments.length ? (this._rowConfig = assign(this._rowConfig, _), this) : this._rowConfig;
+  }
+
+  /**
+      @memberof Matrix
+      @desc A manual list of IDs to be used for rows.
+      @param {Array} [*value*]
+  */
+  rowList(_) {
+    return arguments.length ? (this._rowList = _, this) : this._rowList;
   }
 
   /**
