@@ -102,8 +102,16 @@ export default class RadialMatrix extends Viz {
         };
       });
 
+    /**
+     * Extracts the axis config "labels" Array, if it exists, it filters
+     * the column labels by the values included in the Array.
+     */
+    const displayLabels = this._columnConfig.labels instanceof Array
+      ? labelData.filter(d => this._columnConfig.labels.includes(d.key))
+      : labelData;
+
     this._columnLabels
-      .data(labelData)
+      .data(displayLabels)
       .x(d => d.x)
       .y(d => d.y)
       .text(d => d.key)
