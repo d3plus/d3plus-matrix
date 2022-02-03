@@ -25,11 +25,11 @@
   "dependencies": {
     "d3-array": "^2.11.0",
     "d3-shape": "^2.0.0",
-    "d3plus-axis": "^1.0.0",
-    "d3plus-common": "^1.0.2",
-    "d3plus-shape": "^1.0.1",
-    "d3plus-text": "^1.0.1",
-    "d3plus-viz": "^1.0.3"
+    "d3plus-axis": "^1.1.1",
+    "d3plus-common": "^1.1.0",
+    "d3plus-shape": "^1.0.6",
+    "d3plus-text": "^1.0.2",
+    "d3plus-viz": "^1.2.0"
   },
   "scripts": {
     "build": "d3plus-build",
