@@ -2,8 +2,8 @@ import {Axis} from "d3plus-axis";
 import {accessor, assign, configPrep, elem} from "d3plus-common";
 import {Rect} from "d3plus-shape";
 import {Viz} from "d3plus-viz";
-import getProp from "./helpers/getProp";
-import prepData from "./helpers/prepData";
+import getProp from "./helpers/getProp.js";
+import prepData from "./helpers/prepData.js";
 
 const defaultAxisConfig = {
   align: "start",

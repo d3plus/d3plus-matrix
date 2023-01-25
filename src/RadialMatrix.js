@@ -4,8 +4,8 @@ import {accessor, assign, configPrep, constant, elem} from "d3plus-common";
 import {Path} from "d3plus-shape";
 import {TextBox} from "d3plus-text";
 import {Viz} from "d3plus-viz";
-import getProp from "./helpers/getProp";
-import prepData from "./helpers/prepData";
+import getProp from "./helpers/getProp.js";
+import prepData from "./helpers/prepData.js";
 
 const tau = Math.PI * 2;
 

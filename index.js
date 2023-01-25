@@ -1,2 +1,2 @@
-export {default as Matrix} from "./src/Matrix";
-export {default as RadialMatrix} from "./src/RadialMatrix";
+export {default as Matrix} from "./src/Matrix.js";
+export {default as RadialMatrix} from "./src/RadialMatrix.js";
