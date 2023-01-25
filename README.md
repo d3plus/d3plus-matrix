@@ -1,12 +1,16 @@
 # d3plus-matrix
 
-[![NPM Release](http://img.shields.io/npm/v/d3plus-matrix.svg?style=flat)](https://www.npmjs.org/package/d3plus-matrix) [![Build Status](https://travis-ci.org/d3plus/d3plus-matrix.svg?branch=master)](https://travis-ci.org/d3plus/d3plus-matrix) [![Dependency Status](http://img.shields.io/david/d3plus/d3plus-matrix.svg?style=flat)](https://david-dm.org/d3plus/d3plus-matrix) [![Gitter](https://img.shields.io/badge/-chat_on_gitter-brightgreen.svg?style=flat&logo=gitter-white)](https://gitter.im/d3plus/)
-
 Row/column layouts
 
 ## Installing
 
-If you use NPM, `npm install d3plus-matrix`. Otherwise, download the [latest release](https://github.com/d3plus/d3plus-matrix/releases/latest). You can also load d3plus-matrix as a standalone library or as part of [D3plus](https://github.com/d3plus/d3plus). ES modules, AMD, CommonJS, and vanilla environments are supported. In vanilla, a `d3plus` global is exported:
+If using npm, `npm install d3plus-matrix`. Otherwise, you can download the [latest release from GitHub](https://github.com/d3plus/d3plus-matrix/releases/latest) or load from a [CDN](https://cdn.jsdelivr.net/npm/d3plus-matrix@1).
+
+```js
+import modules from "d3plus-matrix";
+```
+
+d3plus-matrix can be loaded as a standalone library or bundled as part of [D3plus](https://github.com/d3plus/d3plus). ES modules, AMD, CommonJS, and vanilla environments are supported. In vanilla, a `d3plus` global is exported:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/d3plus-matrix@1"></script>
@@ -14,6 +18,10 @@ If you use NPM, `npm install d3plus-matrix`. Otherwise, download the [latest rel
   console.log(d3plus);
 </script>
 ```
+
+## Examples
+
+Live examples can be found on [d3plus.org](https://d3plus.org/), which includes a collection of example visualizations using [d3plus-react](https://github.com/d3plus/d3plus-react/). These examples are powered by the [d3plus-storybook](https://github.com/d3plus/d3plus-storybook/) repo, and PRs are always welcome. :beers:
 
 ## API Reference
 
@@ -290,4 +298,4 @@ function row(a, b) {
 
 
 
-###### <sub>Documentation generated on Thu, 03 Feb 2022 22:41:17 GMT</sub>
+###### <sub>Documentation generated on Wed, 25 Jan 2023 17:54:33 GMT</sub>
